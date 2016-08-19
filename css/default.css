@@ -1,0 +1,285 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #E6E6E6;
+}
+/***********/
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+/**********************************/
+#content_main{
+    background-color: #fff;
+}
+#ajax_div{
+    position: fixed;
+    top:0;
+    left: 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #5E99BD;
+    color: #5E99BD;
+    display: none;
+}
+body > #content_main .images-header img{
+    display: inline;
+}
+body > #content_main .images-header img:first-child{
+    width: 36%;
+}
+body > #content_main .images-header img + img{
+    width: 63%;
+}
+#main_menu{
+    border: 1px solid #E6E6E6;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px #3C3C3C;
+    
+}
+.datos_usuario_tipo{
+    display:none;
+}
+.actividades-list, #lista_actividades .droppable ul{
+    list-style: none;
+}
+.actividades-list li{
+    min-height: 30px;
+    margin: 5px;
+    border:1px solid #30A0C7;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor:move;
+}
+#lista_actividades .droppable li{
+    min-height: 30px;
+    margin: 5px;
+    border:1px solid #30A0C7;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+#table_profesores tbody tr td span{
+    padding-right: 5px;
+}
+.dragg_div{
+    border:1px solid #112853;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px; 
+}
+.dragg_div > div{
+    display: inline-block;
+}
+.dragg_div > div.content_dragg > span{
+
+    padding: 3px;
+    display: block;
+}
+.dragg_div .move_dragg{
+    cursor: move;
+}
+.dragg-taller-div .panel-heading{
+    cursor: move;
+}
+#inscribir_panel .panel-body{
+    height: 500px;
+    overflow-y: auto;
+}
+#inscribir_panel .panel-footer{
+    min-height: 55px;
+}
+#inscribir_panel .panel-body p{
+    text-align: center;
+    margin-top: 150px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border: #112853 dashed 1px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color:#AAA;
+}
+#materias > .panel-body{
+    height: 555px;
+    overflow-y: auto;
+}
+#talleres_semestre_div .panel-body{
+    height: 580px;
+    overflow-y: auto;
+}
+#datos_baucher div{
+    margin:5px;
+}
+#datos_baucher .datos_alumno{
+    margin-top: 40px;
+}
+#datos_baucher .datos_alumno .nombre-span{
+    display:inline-block;
+    width: 150px;
+}
+#lista_semestre .panel-heading h3 , #talleres_semestre_div .panel-heading h3 , #lista_alumnos .panel-heading h3{
+    text-align: center;
+}
+.panel-talleres .panel-body p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
+    display: block;
+    max-height: 140px;
+}
+#container .panel-talleres h3{
+    margin:0;
+    padding:15px 5px;
+}
+#container .panel-talleres .panel-heading{
+    padding: 0;
+}
+#main_menu li a{
+    color: #112853;
+}
+#main_menu li a:hover , #main_menu li.active a{
+    background-color: #112853;
+    color: #fff;
+}
+#nav_bar_div .btn-link{
+    color: #112853;
+}
+#nav_bar_div .btn-link:hover, #container .btn-link:hover{
+    color : rgba(17,40,83,0.7);
+}
+#container .btn-link , #sub_menu_pasos a{
+    color: #112853;
+}
+#container .panel-talleres .panel-heading h3{
+    color:#fff;
+    font-size: 16px;
+}
+#container .panel-talleres .panel-body{
+    padding: 5px;
+}
+#container .panel-primary , #container .panel-info, #container .panel-info > .panel-heading{
+    border-color: #E6E6E6;
+    box-shadow: 2px 2px 5px #3C3C3C;
+}
+#container .panel-primary > .panel-heading{
+    background-color: #112853;
+    background-image: none;
+    border-color: #112853;
+}
+#container .panel-info > .panel-heading{
+    color: #FFF;
+}
+#container .panel-default > .panel-heading{
+    padding: 1px 1px 1px 15px;
+}
+#container .alert-success{
+    background-image: none;
+    background-color: #efd4a5;
+    color: #a1711e;
+    border-color: #b88252;
+}
+#container .alert-info .btn-link{
+    color:#e6644d;
+}
+#inscribir_panel .alert-info .btn-link{
+    color:#112853;
+}
+#container .alert-info .btn-link:hover{
+    color:#FFF;
+}
+#content_count{
+    padding-bottom: 20px;
+}
+.multiselect {
+    text-align: left;
+}
+#datos_usuarios .panel-heading h3{
+    margin: 1px;
+}
+body,html{
+    height:100%;
+}
+#content_main{
+    min-height:100%;
+}
+#footer_content{
+    
+}
+.listas strong{
+    display: block;
+}
+.btn-primary{
+    background-color: #033b6b;
+    background-image: none;
+    border-color: #033b6b;
+}
+.btn-primary:hover{
+    background-color: #044b89;
+    background-image: none;
+    border-color: #98c2e6;
+}
+.table-asistencia thead th{
+    text-align: center;
+}
+.panel-talleres-cambio{
+    cursor: pointer;
+}
+.talleres-class .thumbnail h3{
+    font-size: 14px;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/js/inicio.js</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/js/talleres_semestre.js</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/models/talleres_model.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/models/ocupaciones_model.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/views/acceso/registro_view.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/views/main/info_view.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/controllers/admin/talleres_semestre.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/models/carreras_model.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/js/inscripcion.js</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/models/taller_semestre_horario_model.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/js/listas.js</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/views/main/inicio_view.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/controllers/acceso/registro.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/views/admin/listas_view.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/models/talleres_semestre_model.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/controllers/admin/talleres.php</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/js/talleres.js</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/css/default.css</file>
+            <file>file:/D:/xampp/htdocs/actividades_culturales/application/views/alumnos/inscripcion_view.php</file>
+        </group>
+    </open-files>
+</project-private>
