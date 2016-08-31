@@ -167,10 +167,16 @@ class Inscripcion extends CI_Controller {
                         if ($baucher_id) {
                             $exito = true;
                             $ts = $this->talleres_semestre_model->get($id['id'] , 'taller_id');
+                            $costo = $this->talleres_model->get_costo_by_tipo($ts['taller_id'] , get_type_user());
+                            
+
+                            if (date('Y-m-d') >= date('Y-m-d', strtotime("2016-08-30"))) {
+                                $costo += 20;
+                            }
                             $data_aux = array(
                                 'taller_semestre_id' => $id['id'],
                                 'baucher_id' => $baucher_id,
-                                'aportacion' => $this->talleres_model->get_costo_by_tipo($ts['taller_id'] , get_type_user())
+                                'aportacion' => $costo
                             );
                             if ($this->baucher_talleres_model->insert($data_aux) === false) {
                                 $exito = false;
@@ -245,12 +251,12 @@ class Inscripcion extends CI_Controller {
                 }
             }
             $date_aux = getdate(strtotime($data['baucher']['fecha_expedicion']));
-            if ($date_aux['wday'] > 3) {
-                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 4, $date_aux['year']);
+            if ($date_aux['wday'] > 1) {
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 6, $date_aux['year']);
             } else if ($date_aux['wday'] == 0) {
-                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 3, $date_aux['year']);
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 5, $date_aux['year']);
             } else {
-                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 2, $date_aux['year']);
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 4, $date_aux['year']);
             }
             $data['usuario'] = $this->usuarios_model->get($usr_id);
             switch ($data["usuario"]['tipo_usuario_id']) {

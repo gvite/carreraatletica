@@ -15,7 +15,8 @@ class Hook {
             'acceso/registro/insert' , 
             'alumnos/inscripcion/get_pdf/*' , 
             'admin/taller_semestre_horario/get_by_semestre/*',
-            'admin/talleres/get_info/*');
+            'admin/talleres/get_info/*',
+            'administrador');
         $CI->load->helper(array('sesion' , 'url'));
         if (!get_id()) {
             $redirect = true;

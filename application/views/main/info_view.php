@@ -41,10 +41,17 @@ if (!defined('BASEPATH'))
                 </thead>
                 <tbody>
                     <tr>
+                        <td colspan="4">Hasta el 21 de Octubre del 2016</td>
+                    </tr>
+
+                    <tr>
                         <td>$ <?php echo $taller['costo_alumno'] ?></td>
                         <td>$ <?php echo $taller['costo_exalumno'] ?></td>
                         <td>$ <?php echo $taller['costo_trabajador'] ?></td>
                         <td>$ <?php echo $taller['costo_externo'] ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Del 22 de Octubre al 04 de Noviembre del 2016</td>
                     </tr>
                 </tbody>
             </table>

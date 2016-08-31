@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
 if (!function_exists('base_url')) {
 
     function base_url() {
-        return 'http://localhost/actividades_culturales_nuevo/';
+        return 'http://localhost/carreraatletica/';
     }
 
 }

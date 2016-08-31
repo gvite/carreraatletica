@@ -224,10 +224,14 @@ class Registro extends CI_Controller {
                         if ($baucher_id) {
                             $exito = true;
                             $ts = $this->talleres_semestre_model->get($id['id'] , 'taller_id');
+                            $costo = $this->talleres_model->get_costo_by_tipo($ts['taller_id'] , get_type_user());
+                            if (date('Y-m-d') > date('Y-m-d', strtotime("2016-10-21"))) {
+                                $costo += 20;
+                            }
                             $data_aux = array(
                                 'taller_semestre_id' => $id['id'],
                                 'baucher_id' => $baucher_id,
-                                'aportacion' => $this->talleres_model->get_costo_by_tipo($ts['taller_id'] , get_type_user())
+                                'aportacion' => $costo
                             );
                             if ($this->baucher_talleres_model->insert($data_aux) === false) {
                                 $exito = false;
