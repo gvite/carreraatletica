@@ -73,8 +73,8 @@ class Login extends CI_Controller {
                 $config['smtp_host'] = 'ssl://smtp.googlemail.com'; # Not tls://
                 $config['smtp_port'] = 465;
                 $config['starttls'] = TRUE;
-                $config['smtp_user'] = 'actividades.culturales.fesa@gmail.com';
-                $config['smtp_pass'] = 'actividades2014';
+                $config['smtp_user'] = 'carreraatleticafesa@gmail.com';
+                $config['smtp_pass'] = '7169Fesa06';
                 $config['smtp_timeout'] = 5;
                 $config['newline'] = "\r\n";
                 $config['charset'] = 'utf-8';

@@ -11,5 +11,5 @@ if (!defined('BASEPATH'))
     <h4><?php $usuario['nombre'] . ' ' . $usuario['paterno'] . ' ' . $usuario['materno']; ?></h4>
 </div>
 <div style="text-align: center">
-    <img src="<?php echo base_url()?>images/talleres/2_image.jpg" width="400px">
+    <img src="<?php echo base_url()?>images/talleres/2_image_aux.jpg" width="400px">
 </div>
