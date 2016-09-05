@@ -9,6 +9,20 @@ class Registro extends CI_Controller {
         parent::__construct();
         $this->load->model('baucher_model');
         $this->load->model('talleres_model');
+        $this->load->model('taller_semestre_horario_model');
+        $this->load->library('archivos');
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com'; # Not tls://
+        $config['smtp_port'] = 465;
+        $config['starttls'] = TRUE;
+        $config['smtp_user'] = 'actividades.culturales.fesa@gmail.com';
+        $config['smtp_pass'] = 'actividades2014';
+        $config['smtp_timeout'] = 5;
+        $config['newline'] = "\r\n";
+        $config['charset'] = 'utf-8';
+        $config['mailtype'] = 'html';
+        $this->load->library('email', $config);
+
     }
 
     public function index() {
@@ -108,7 +122,19 @@ class Registro extends CI_Controller {
                         set_type_user($type['id']);
                     }
                     $baucher_id = $this->inscribir(2 , $id);
+                    $pdf_route = $this->get_pdf($baucher_id , $id);
                     if($baucher_id){
+                        
+                        $asunto = 'FES Aragón';
+                        
+                        $mensaje = $this->load->view('acceso/email_carrera_view', '', TRUE);
+                       
+                        $this->email->from("fesar_cultura@unam.mx", "");
+                        $this->email->to($data['email']);
+                        $this->email->subject($asunto);
+                        $this->email->message($mensaje);
+                        $this->email->attach($pdf_route);
+                        $this->email->send();
                         //$this->db->trans_complete();
                         echo json_encode(array('status' => 'MSG', 'type' => 'success', 'message' => 'El Registro se realiz&oacute; con &eacute;xito',  "baucher" => $baucher_id , 'usr' => $id));
                     }else{
@@ -167,10 +193,10 @@ class Registro extends CI_Controller {
             if ($date1 < $date2) {
                 $diff = $date2->diff($date1);
                 $years = $diff->y;
-                if($years >= 17){
+                if($years >= 15){
                     return true;
                 }else{
-                    $this->form_validation->set_message('valida_fecha', 'No alcanzas el mínimo de edad (17 años) <br />para inscribir esta actividad.');
+                    $this->form_validation->set_message('valida_fecha', 'No alcanzas el mínimo de edad (15 años) <br />para inscribir esta actividad.');
                     return false;    
                 }
                 
@@ -254,6 +280,72 @@ class Registro extends CI_Controller {
                     return false;
                 }
         
+    }
+    public function get_pdf($baucher_id, $usr_id) {
+        $this->load->model('baucher_talleres_model');
+        $this->load->model('baucher_model');
+        $data['baucher'] = $this->baucher_model->get($baucher_id);
+        if ($data['baucher']) {
+            $this->load->helper('sesion');
+            $route = str_replace("\\", "/", FCPATH) . "uploads/comprobantes/" . $usr_id . '/';
+            $this->load->helper('url');
+            if (file_exists($route . 'pdf_' . $baucher_id . '.pdf')) {
+                unlink($route . 'pdf_' . $baucher_id . '.pdf');
+            }
+            $this->load->helper('date');
+            $termina_hora = 20;
+            $data['talleres'] = $this->baucher_talleres_model->get_by_baucher($baucher_id);
+            if (is_array($data['talleres'])) {
+                foreach ($data['talleres'] as $key2 => $taller_semestre) {
+                    $data['talleres'][$key2]['horarios'] = $this->taller_semestre_horario_model->get_by_taller_sem($taller_semestre['id']);
+                }
+            }
+            $date_aux = getdate(strtotime($data['baucher']['fecha_expedicion']));
+            if ($date_aux['wday'] > 1) {
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 6, $date_aux['year']);
+            } else if ($date_aux['wday'] == 0) {
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 5, $date_aux['year']);
+            } else {
+                $date_termino_insc = mktime($termina_hora, 0, 0, $date_aux['mon'], $date_aux['mday'] + 4, $date_aux['year']);
+            }
+            $data['usuario'] = $this->usuarios_model->get($usr_id);
+            switch ($data["usuario"]['tipo_usuario_id']) {
+                case 2: case 3:
+                    $data["usuario"]["data_user"] = $this->datos_alumnos_ex_model->get_by_user_id($data["usuario"]['id']);
+                    break;
+                case 4:
+                    $data["usuario"]["data_user"] = $this->datos_trabajador_model->get_by_user_id($data["usuario"]['id']);
+                    break;
+                case 5:
+                    $data["usuario"]["data_user"] = $this->datos_externo_model->get_by_user_id($data["usuario"]['id']);
+                    break;
+            }
+            $d1 = new DateTime($data["usuario"]['nacimiento']);
+            $d2 = new DateTime('now');
+            $diff = $d2->diff($d1);
+            $data["usuario"]['edad'] = $diff->y;
+            $data['date_fin'] = getdate($date_termino_insc);
+            $data['termina_hora'] = $termina_hora;
+            $content = $this->load->view('alumnos/comprobante_view', $data, true);
+            $css = $this->load->view('alumnos/comprobante_css', $data, true);
+            $this->load->library('mpdf');
+            $mpdf = new mPDF();
+            $header = '<img src="images/logo_pdf.jpg" style="margin-top:30px;" width="110px" /><img src="images/40_anios.jpg" style="margin-top:30px;float:right;" width="90px"/>';
+            $mpdf->SetProtection(array('copy' , 'print'));
+            $mpdf->SetHTMLHeader($header);
+            $mpdf->WriteHTML($css, 1);
+            $mpdf->WriteHTML($content, 2);
+            //$footer = $this->load->view('alumnos/comprobante_footer_view' , $data1 , true);
+            //$mpdf->SetHTMLFooter($footer);
+            if ($this->archivos->create_folder($route)) {
+                $mpdf->Output($route . "pdf_" . $baucher_id . '.pdf', 'F');
+                return $route . 'pdf_' . $baucher_id . '.pdf';
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 }

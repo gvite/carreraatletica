@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
     <h3>CARRERA ATL&Eacute;TICA DE LA FES ARAG&Oacute;N 5 KM</h3>
     <h4>Domingo 9 de octubre del 2016</h4>
     <h3>FICHA DE INSCRIPCI&Oacute;N</h3>
-    <br /><br />
+    <br />
     <div>
         <?php
         switch ($usuario['tipo_usuario_id']) {
@@ -43,9 +43,8 @@ if (!defined('BASEPATH'))
         <div>Rama: <?php echo ($usuario["sexo"] == 1) ? "Varonil" : "Femenil";?></div>
     </div>
 </div>
-<br />
 <div>Fecha de Registro: <?php echo exchange_date_time($baucher["fecha_expedicion"]);?></div>
-<div>Cantidad a pagar: $<?php echo $talleres[0]["aportacion"];?></div> <br />
+<div>Cantidad a pagar: $<?php echo $talleres[0]["aportacion"];?></div>
 <div>
 <strong>* A partir de éste momento, dipones de cinco días hábiles para hacer tu pago (<?php echo $date_fin["mday"]. "-" . $date_fin["mon"] . "-" . $date_fin["year"];?>).</strong><br />
 <strong>* El pago se realiza en las cajas de la FES Aragón, de lunes a viernes, en un horario de 9:45 a 13:00 hrs. y de <br />16:00 a 19:00 hrs.</strong><br />
@@ -60,7 +59,7 @@ if (!defined('BASEPATH'))
     a la UNIVERSIDAD NACIONAL AUT&Oacute;NOMA DE M&Eacute;XICO y al Comit&eacute; Organizador.
     </p>
 </div>
-<br /><br /><br /><br />
+<br /><br />
 <div class="firmas">
         <span>&nbsp;&nbsp;&nbsp;Firma del corredor&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;
         <?php
