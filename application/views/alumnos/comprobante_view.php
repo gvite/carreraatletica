@@ -39,7 +39,7 @@ if (!defined('BASEPATH'))
         ?>
         <div>Tel&eacute;fono: <?php echo $usuario['telefono']; ?></div>
         <div>Email: <?php echo $usuario['email']; ?></div>
-        <div>Categor&iacute;a: <?php echo ($usuario["edad"] >= 17 && $usuario["edad"] <= 45 )? "Libre": (($usuario["edad"] >= 46) ? "Master" : "")?></div>
+        <div>Categor&iacute;a: <?php echo ($usuario["edad"] >= 15 && $usuario["edad"] <= 45 )? "Libre": (($usuario["edad"] >= 46) ? "Master" : "")?></div>
         <div>Rama: <?php echo ($usuario["sexo"] == 1) ? "Varonil" : "Femenil";?></div>
     </div>
 </div>
